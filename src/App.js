@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 // Import Components
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 // Import Pages
 import Home from './pages/Home';
@@ -32,7 +33,7 @@ function App() {
         </Routes>
         
         {/* You can also extract your footer to src/components/Footer.jsx and place it here */}
-        
+        <Footer />
       </div>
     </Router>
   );

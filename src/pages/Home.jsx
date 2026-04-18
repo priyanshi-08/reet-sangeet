@@ -4,6 +4,7 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import QuoteCarousel from '../components/QuoteCarousel';
 import HeroCarousel from '../components/HeroCarousel';
 import HomeAbout from '../components/HomeAbout';
+import HomeCourses from '../components/HomeCourses';
 
 function Home() {
   const phoneLink = "https://wa.me/917303747778?text=Hi%20Reet%20Sangeet!%20I%20am%20interested%20in%20booking%20a%20free%20demo%20class.";
@@ -46,6 +47,7 @@ function Home() {
       </section> */}
       <HeroCarousel />
       <HomeAbout />
+      <HomeCourses />
       <QuoteCarousel />
     </div>
   );

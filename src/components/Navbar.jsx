@@ -13,7 +13,8 @@ function Navbar() {
   return (
     <nav className="flex justify-between items-center p-6 bg-soft-pearl shadow-sm sticky top-0 z-50">
       <Link to="/" className="text-2xl font-extrabold flex items-center gap-2 tracking-tight">
-        <span className="text-sunset-coral text-3xl">🎵</span> <span className="text-deep-navy">Reet Sangeet</span>
+        <img src="/favicon_io/apple-touch-icon.png" alt="Reet Sangeet logo" className="w-8 h-8" />
+        <span className="text-deep-navy">Reet Sangeet</span>
       </Link>
       
       <div className="hidden md:flex gap-8 font-semibold text-deep-navy/80">
