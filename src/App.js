@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 
 // Import Components
@@ -17,9 +18,20 @@ import About from "./components/About";
 // import Gallery from './pages/Gallery';
 // import Contact from './pages/Contact';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-soft-pearl text-deep-navy font-sans selection:bg-soothing-teal selection:text-white">
         {/* Navbar stays at the top of every page */}
         <Navbar />
