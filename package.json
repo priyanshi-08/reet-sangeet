@@ -43,6 +43,9 @@
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "framer-motion": "^12.38.0",
+    "kill-port": "^2.0.1",
+    "swiper": "^12.1.3"
   }
 }
