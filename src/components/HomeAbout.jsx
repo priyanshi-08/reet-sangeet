@@ -27,7 +27,7 @@ function HomeAbout() {
             Based in Gurugram, Reet Sangeet was born from a simple belief: music is not about perfection, it's about expression. We nurture creativity over rigid theory, letting every student find their unique musical identity in a welcoming, pressure-free environment.
           </p>
           
-          <Link onClick={() => {console.log("Navigating to About page...")  }}
+          <Link
             to="/about" 
             className="inline-flex items-center gap-2 text-sunset-coral font-bold text-lg group"
           >
