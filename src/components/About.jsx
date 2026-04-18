@@ -2,8 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 function About() {
+  console.log("Rendering About page...");
   return (
-    <div className="min-h-screen bg-white py-24 px-6 text-deep-navy">
+    <div className=" relative w-full h-[85vh] md:h-[90vh] min-h-screen bg-white py-24 px-6 text-deep-navy">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}

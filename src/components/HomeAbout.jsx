@@ -14,7 +14,6 @@ function HomeAbout() {
     <section className="py-24 px-6 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         
-        {/* Left Side: Text Introduction */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -28,7 +27,7 @@ function HomeAbout() {
             Based in Gurugram, Reet Sangeet was born from a simple belief: music is not about perfection, it's about expression. We nurture creativity over rigid theory, letting every student find their unique musical identity in a welcoming, pressure-free environment.
           </p>
           
-          <Link 
+          <Link onClick={() => {console.log("Navigating to About page...")  }}
             to="/about" 
             className="inline-flex items-center gap-2 text-sunset-coral font-bold text-lg group"
           >
