@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt } from 'react-icons/fa';
+import banner1 from "../assets/banner/banner1.jpeg"
 
 // Import Swiper styles
 import 'swiper/css';
@@ -17,8 +18,7 @@ function HeroCarousel() {
       id: 1,
       title: "Unlock Your Musical Talent",
       subtitle: "Personalized training in Guitar, Keyboard, Singing & Bollywood Music.",
-      // You will replace this empty string with your image URL later: e.g., "url('/images/hero-1.jpg')"
-      bgImage: "linear-gradient(to right, #292F36, #4ECDC4)" 
+      bgImage: `url(${banner1})`
     },
     {
       id: 2,

@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 const reviewContext = require.context(
-  '../../assets/reviews',
+  '../assets/reviews',
   false,
   /\.(png|jpe?g|webp)$/i
 );
