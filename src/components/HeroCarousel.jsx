@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt } from 'react-icons/fa';
-import banner1 from "../assets/banner/banner1.jpeg"
+import banner1 from "../assets/banner/banner1.jpeg";
+import banner2 from "../assets/banner/banner2.jpeg";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -25,7 +26,7 @@ function HeroCarousel() {
       title: "Where Every Note Tells a Story.",
       subtitle: "Join a vibrant community of passionate learners in Gurugram.",
       // You will replace this empty string with your image URL later: e.g., "url('/images/hero-2.jpg')"
-      bgImage: "linear-gradient(to right, #292F36, #FF6B6B)" 
+      bgImage: `url(${banner2})` 
     }
   ];
 
