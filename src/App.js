@@ -1,13 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 // Import Components
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 // Import Pages
-import Home from './pages/Home';
-import About from './pages/About';
+import Home from "./components/Home";
+import About from "./components/About";
 // import Courses from './pages/Courses';
 // import Gallery from './pages/Gallery';
 // import Contact from './pages/Contact';
@@ -16,7 +21,6 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-soft-pearl text-deep-navy font-sans selection:bg-soothing-teal selection:text-white">
-        
         {/* Navbar stays at the top of every page */}
         <Navbar />
 
@@ -31,10 +35,9 @@ function App() {
           <Route path="/contact" element={<Contact />} /> 
           */}
         </Routes>
-        
         {/* You can also extract your footer to src/components/Footer.jsx and place it here */}
-        <Footer />
       </div>
+      <Footer />
     </Router>
   );
 }
