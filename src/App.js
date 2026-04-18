@@ -14,7 +14,7 @@ import Footer from "./components/Footer";
 // Import Pages
 import Home from "./components/Home";
 import About from "./components/About";
-// import Courses from './pages/Courses';
+import Courses from "./components/Courses";
 // import Gallery from './pages/Gallery';
 // import Contact from './pages/Contact';
 
@@ -41,11 +41,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/courses" element={<Courses />} />
           <Route path="*" element={<Navigate to="/" replace />} />
-          {/* <Route path="/courses" element={<Courses />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} /> 
-          */}
+          {/* <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} /> */}
         </Routes>
         {/* You can also extract your footer to src/components/Footer.jsx and place it here */}
       </div>
