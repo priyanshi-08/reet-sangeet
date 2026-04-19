@@ -26,9 +26,10 @@ const ContactUs = () => {
             <div className="bg-white p-4 rounded-2xl shadow-sm border border-deep-navy/10 h-80 overflow-hidden">
               <h3 className="font-bold mb-3">Our Location</h3>
               <iframe
+                title="Reet Sangeet Music Academy Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.3245450411315!2d76.9620595761339!3d28.407443775789643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3d7a3e7feca7%3A0x2ff53b86c4736ef2!2sReet%20Sangeet%20Music%20Academy!5e0!3m2!1sen!2sin!4v1713535000000!5m2!1sen!2sin"
                 width="100%"
-                height="450"
+                height="100%"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
