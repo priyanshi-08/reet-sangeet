@@ -4,7 +4,7 @@ import banner4 from '../assets/banner/banner4.jpg';
 
 const AboutUs = () => {
   return (
-    <div className="bg-soft-pearl text-deep-navy">
+    <div className="bg-soft-pearl text-deep-navy"> 
       {/* Hero / Intro Section */}
       <section className="py-20 px-6 max-w-7xl mx-auto text-center">
         <h2 className="text-sm font-bold tracking-widest uppercase text-soothing-teal mb-4">
@@ -21,7 +21,6 @@ const AboutUs = () => {
         </p>
       </section>
 
-      {/* Philosophy Section - Alternating Layout */}
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
