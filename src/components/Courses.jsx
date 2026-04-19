@@ -1,9 +1,13 @@
 import React from 'react'
 import HomeCourses from './HomeCourses'
+import Certifications from './Certifications'
 
 function Courses() {
   return (
-   <HomeCourses />
+    <>
+      <HomeCourses />
+      <Certifications />
+    </>
   )
 }
 
