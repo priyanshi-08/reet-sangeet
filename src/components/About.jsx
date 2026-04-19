@@ -5,7 +5,6 @@ import banner4 from '../assets/banner/banner4.jpg';
 const AboutUs = () => {
   return (
     <div className="bg-soft-pearl text-deep-navy"> 
-      {/* Hero / Intro Section */}
       <section className="py-20 px-6 max-w-7xl mx-auto text-center">
         <h2 className="text-sm font-bold tracking-widest uppercase text-soothing-teal mb-4">
           Our Story
