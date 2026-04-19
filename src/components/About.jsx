@@ -88,7 +88,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="bg-deep-navy py-16 px-6 text-center text-white mt-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to find your rhythm?</h2>
         <p className="mb-10 text-white/70 max-w-xl mx-auto">
