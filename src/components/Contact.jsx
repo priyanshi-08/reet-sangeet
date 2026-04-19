@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 const ContactUs = () => {
   // Social Links
-  const facebookUrl = "https://facebook.com/reetsangeet"; // Update with your actual handles
-  const instagramUrl = "https://instagram.com/reetsangeet";
+  const facebookUrl = "https://www.facebook.com/reetsangeet.reetsangeetmusicacademy"; // Update with your actual handles
+  const instagramUrl = "https://www.instagram.com/reetsangeetmusic";
 
   const [formData, setFormData] = useState({
     name: "",
