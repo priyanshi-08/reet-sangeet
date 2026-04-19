@@ -15,8 +15,8 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import About from "./components/About";
 import Courses from "./components/Courses";
-// import Gallery from './pages/Gallery';
-// import Contact from './pages/Contact';
+import Gallery from "./components/Gallery";
+import Contact from "./components/Contact";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -42,9 +42,9 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
-          {/* <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} /> */}
         </Routes>
         {/* You can also extract your footer to src/components/Footer.jsx and place it here */}
       </div>

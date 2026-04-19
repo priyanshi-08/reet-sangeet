@@ -1,6 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import guitar from "../assets/courses/guitar.jpg";
+import piano from "../assets/courses/piano.jpg";
+import classical from "../assets/courses/classical.jpg";
+import hiphop from "../assets/courses/hip-hop.jpg";
+import kathak from "../assets/courses/kathak.jpg";
+import harmonium from "../assets/courses/harmonium.jpg";
+import tabla from "../assets/courses/tabla.jpg";
+import theatre from "../assets/courses/theatre.jpg";
+
 
 function HomeCourses() {
   const whatsappMsg = "Hi%20Reet%20Sangeet!%20I%20am%20interested%20in%20knowing%20more%20about%20your%20classes.";
@@ -16,37 +24,37 @@ function HomeCourses() {
     { 
       title: "Piano / Keyboard",
       desc: "Learn scales, sheet music, and beautiful melodies.",
-      bgImageUrl: "https://placehold.co/400x400/C1E1FF/C1E1FF?text=Piano"
+      bgImageUrl: piano
     },
     { 
       title: "Hindustani Classical",
       desc: "Build a strong foundation in raags and voice modulation.",
-      bgImageUrl: "https://placehold.co/400x400/FFC1E3/FFC1E3?text=Vocal"
+      bgImageUrl: classical
     },
     { 
       title: "Hip-hop & Bollywood",
       desc: "Groove to the latest beats with energetic choreography.",
-      bgImageUrl: "https://placehold.co/400x400/FFF8C1/FFF8C1?text=Dance"
+      bgImageUrl: hiphop
     },
     { 
       title: "Kathak",
       desc: "Embrace the grace, expressions, and rhythm of classical dance.",
-      bgImageUrl: "https://placehold.co/400x400/C1FFD9/C1FFD9?text=Kathak"
+      bgImageUrl: kathak
     },
     { 
       title: "Harmonium",
       desc: "Learn the soulful keys of this traditional accompanying instrument.",
-      bgImageUrl: "https://placehold.co/400x400/FFE7C1/FFE7C1?text=Harmonium"
+      bgImageUrl: harmonium
     },
     { 
       title: "Tabla",
       desc: "Master the beats, taals, and complex rhythmic patterns.",
-      bgImageUrl: "https://placehold.co/400x400/E1E1E1/E1E1E1?text=Tabla"
+      bgImageUrl: tabla
     },
     { 
       title: "Theatres",
       desc: "Build confidence, expression, and stage presence through acting.",
-      bgImageUrl: "https://placehold.co/400x400/E3C1FF/E3C1FF?text=Theatre"
+      bgImageUrl: theatre
     }
   ];
 
