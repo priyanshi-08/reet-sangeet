@@ -23,8 +23,13 @@ function Navbar() {
       <div className="flex justify-between items-center p-6">
         {/* Logo */}
         <Link to="/" className="text-2xl font-extrabold flex items-center gap-2 tracking-tight">
-          <img src="/favicon_io/apple-touch-icon.png" alt="Reet Sangeet logo" className="w-8 h-8" />
-          <span className="text-deep-navy">Reet Sangeet</span>
+          <img src="/favicon_io/apple-touch-icon.png" alt="Reet Sangeet logo" className="w-8 h-8 shrink-0" />
+          <span className="flex flex-col items-start leading-tight">
+            <span className="text-deep-navy">Reet Sangeet</span>
+            <span className="text-[0.65rem] sm:text-xs font-semibold text-deep-navy/65 tracking-wide">
+              Music Academy
+            </span>
+          </span>
         </Link>
 
         {/* Desktop Links */}

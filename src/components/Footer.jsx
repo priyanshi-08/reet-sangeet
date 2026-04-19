@@ -13,9 +13,17 @@ function Footer() {
         
         {/* Column 1: About */}
         <div>
-          <Link to="/" className="text-3xl font-extrabold flex items-center gap-2 tracking-tight mb-6 text-white hover:text-soothing-teal transition-colors">
-            <img src="/favicon_io/apple-touch-icon.png" alt="Reet Sangeet logo" className="w-8 h-8" />
-            Reet Sangeet
+          <Link
+            to="/"
+            className="text-3xl font-extrabold flex items-center gap-3 tracking-tight mb-6 text-white hover:text-soothing-teal transition-colors"
+          >
+            <img src="/favicon_io/apple-touch-icon.png" alt="Reet Sangeet logo" className="w-8 h-8 shrink-0" />
+            <span className="flex flex-col items-start leading-tight">
+              <span>Reet Sangeet</span>
+              <span className="text-sm font-semibold text-soft-pearl/75 tracking-wide normal-case">
+                Music Academy
+              </span>
+            </span>
           </Link>
           <p className="text-soft-pearl/70 leading-relaxed mb-6">
             Creating a welcoming space where students of all ages can explore their musical passion, build confidence, and find their unique voice in Gurugram.
