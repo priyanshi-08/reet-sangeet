@@ -88,9 +88,9 @@ function Footer() {
             
             <div className="flex flex-col items-center">
               <div className="p-2 bg-white rounded-xl shadow-md border-2 border-transparent hover:border-soothing-teal transition-colors">
-                <QRCode value="https://www.facebook.com/search/top?q=reet%20sangeet%20reetsangeetmusicacademy" size={80} fgColor="#292F36" />
+                <QRCode value="https://www.facebook.com/reetsangeet.reetsangeetmusicacademy" size={80} fgColor="#292F36" />
               </div>
-              <a href="https://www.facebook.com/search/top?q=reet%20sangeet%20reetsangeetmusicacademy" target="_blank" rel="noreferrer" className="mt-3 flex items-center gap-2 text-soft-pearl/80 hover:text-soothing-teal transition-colors">
+              <a href="https://www.facebook.com/reetsangeet.reetsangeetmusicacademy" target="_blank" rel="noreferrer" className="mt-3 flex items-center gap-2 text-soft-pearl/80 hover:text-soothing-teal transition-colors">
                 <FaFacebookF className="text-lg" /> Facebook
               </a>
             </div>
