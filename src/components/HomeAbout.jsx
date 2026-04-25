@@ -5,7 +5,7 @@ import { FaHeart, FaStar, FaUserFriends } from 'react-icons/fa';
 
 function HomeAbout() {
   const features = [
-    { icon: <FaUserFriends />, title: "All Age Groups", desc: "Kids, teens, and adults welcome." },
+    { icon: <FaUserFriends />, title: "All Age Groups", desc: "Kids, teens, adults and senior welcome." },
     { icon: <FaHeart />, title: "Built on Passion", desc: "Patience and understanding first." },
     { icon: <FaStar />, title: "Live Events", desc: "Building real stage confidence." }
   ];

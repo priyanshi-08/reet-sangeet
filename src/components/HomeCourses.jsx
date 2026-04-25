@@ -9,12 +9,10 @@ import harmonium from "../assets/courses/harmonium.jpg";
 import tabla from "../assets/courses/tabla.jpg";
 import theatre from "../assets/courses/theatre.jpg";
 
-
 function HomeCourses() {
   const whatsappMsg = "Hi%20Reet%20Sangeet!%20I%20am%20interested%20in%20knowing%20more%20about%20your%20classes.";
   const phoneLink = `https://wa.me/917303747778?text=${whatsappMsg}`;
 
-  // Updated array to use image placeholders instead of gradient classes
   const courses = [
     { 
       title: "Guitar",
@@ -89,21 +87,31 @@ function HomeCourses() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              // Added bg-cover bg-center here and removed the gradient classes
-              className={`group p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden flex flex-col items-center text-center border border-gray-100 hover:-translate-y-1 bg-cover bg-center`}
-              style={{ backgroundImage: `url(${course.bgImageUrl})` }}
+              className="group  h-[300px] rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer relative overflow-hidden flex flex-col justify-end text-center border border-gray-100 hover:-translate-y-1"
             >
-              <div className="absolute inset-0 bg-deep-navy/55"></div>
-
-              <h3 className="text-2xl font-bold mb-3 text-white relative z-10">{course.title}</h3>
-              <p className="text-white/90 leading-relaxed mb-6 flex-grow font-medium relative z-10">
-                {course.desc}
-              </p>
               
-              {/* Dynamic hover link */}
-              <span className="text-white font-bold text-sm opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-1 relative z-10">
-                Ask about this <span>→</span>
-              </span>
+              {/* Image Container: Now 10% wider (w-[110%]) and centered (-left-[5%]) */}
+              <div 
+                className="absolute top-0 -left-[5%] w-[110%] h-full max-w-[110%] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                style={{ backgroundImage: `url(${course.bgImageUrl})` }}
+              ></div>
+
+              {/* Gradient Overlay: Opacity significantly reduced for more visibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/75 via-deep-navy/30 to-transparent"></div>
+
+              {/* Text Content */}
+              <div className="relative z-10 p-6 flex flex-col items-center">
+                <h3 className="text-2xl font-bold mb-2 text-white">{course.title}</h3>
+                
+                <p className="text-white/90 leading-relaxed text-sm font-medium">
+                  {course.desc}
+                </p>
+                
+                <span className="text-soothing-teal font-bold text-sm opacity-80 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-300 flex items-center gap-1">
+                  Ask about this <span>→</span>
+                </span>
+              </div>
+
             </motion.a>
           ))}
         </div>

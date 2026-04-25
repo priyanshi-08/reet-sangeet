@@ -2,6 +2,7 @@ import React from 'react';
 import collage1 from '../assets/about/aboutcollage1.jpg';
 import collage2 from '../assets/about/aboutcollage2.jpg';
 import founder from '../assets/about/founder.jpeg'
+import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   return (
@@ -118,14 +119,14 @@ const AboutUs = () => {
 
             <p className="text-deep-navy/70 text-lg leading-relaxed mb-8">
               Growing up, music was the thread that connected my traditions to my dreams.
-              I founded Reet Sangeet to be a home for every curious mind in Sector 84—where
+              I founded Reet Sangeet to be a home for every curious mind in New Gurugram, where
               technical mastery meets the pure joy of creation. We don't just teach
               notes; we build confidence.
             </p>
 
             <div>
               <h4 className="text-xl font-extrabold text-deep-navy">Ruchi Kaushik Vashistha</h4>
-              <p className="text-soothing-teal font-semibold">Founder & Lead Mentor</p>
+              <p className="text-soothing-teal font-semibold">Founder</p>
             </div>
           </div>
         </div>
@@ -136,9 +137,9 @@ const AboutUs = () => {
         <p className="mb-10 text-white/70 max-w-xl mx-auto">
           Join the Reet Sangeet family today and start your musical journey with a free demo class.
         </p>
-        <button className="bg-sunset-coral hover:bg-white hover:text-sunset-coral text-white px-10 py-4 rounded-full font-bold transition-all transform hover:-translate-y-1">
+        <Link to="/courses" className="bg-sunset-coral hover:bg-white hover:text-sunset-coral text-white px-10 py-4 rounded-full font-bold transition-all transform hover:-translate-y-1">
           Explore Our Courses
-        </button>
+        </Link>
       </section>
     </div>
   );
