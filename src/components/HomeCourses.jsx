@@ -50,7 +50,7 @@ function HomeCourses() {
       bgImageUrl: tabla
     },
     { 
-      title: "Theatres",
+      title: "Theatre",
       desc: "Build confidence, expression, and stage presence through acting.",
       bgImageUrl: theatre
     }
