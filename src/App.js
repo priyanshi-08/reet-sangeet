@@ -6,6 +6,7 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async"; // <-- 1. Added SEO Provider
 
 // Import Components
 import Navbar from "./components/Navbar";
@@ -18,6 +19,7 @@ import Courses from "./components/Courses";
 import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 
+// Automatically scrolls to the top of the page when navigating to a new route
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -30,26 +32,33 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-soft-pearl text-deep-navy font-sans selection:bg-soothing-teal selection:text-white">
-        {/* Navbar stays at the top of every page */}
-        <Navbar />
+    // 2. Wrap the Router inside the HelmetProvider
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
 
-        {/* Routes load the specific page content */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-        {/* You can also extract your footer to src/components/Footer.jsx and place it here */}
-      </div>
-      <Footer />
-    </Router>
+        {/* 3. Setup flexbox to keep the footer pinned to the bottom */}
+        <div className="flex flex-col min-h-screen bg-soft-pearl text-deep-navy font-sans selection:bg-soothing-teal selection:text-white">
+          <Navbar />
+
+          {/* 4. main tag with flex-grow expands to fill all empty space above the footer */}
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </main>
+
+          {/* 5. Footer is now safely inside the layout container */}
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 
