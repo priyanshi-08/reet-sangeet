@@ -57,11 +57,8 @@ const AboutUs = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center flex-row-reverse">
           <div className="order-2 md:order-1 space-y-6">
             <h3 className="text-3xl font-bold">Our Philosophy</h3>
-            <p className="text-deep-navy/80 text-lg">
-              We don't believe in "one size fits all" teaching. Our curriculum is tailored
-              to the individual pace of each student. From Hindustani Classical to
-              Western Pop, we ensure the technical foundation is strong while keeping
-              the joy of music alive.
+            <p className="text-deep-navy/80 text-lg text-justify">
+            We don't believe in 'one size fits all' teaching. Our curriculum is tailored to the individual pace of each student. Whether you are exploring the soulful roots of Hindustani Classical or playing the guitar and piano for Western Pop, we ensure your technical foundation is strong while keeping the joy of music alive.
             </p>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 font-semibold">
