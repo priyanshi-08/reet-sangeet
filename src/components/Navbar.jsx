@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// Optional: If you use lucide-react or heroicons, you can replace the spans with icons
 // import { Menu, X } from 'lucide-react'; 
 
 function Navbar() {
