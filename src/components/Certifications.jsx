@@ -33,7 +33,10 @@ function Certifications() {
             Our Certifications
           </motion.h2>
           <p className="text-lg text-deep-navy/70 max-w-6xl mx-auto text-justify">
-           Reet Sangeet Music Academy, the best music school in Gurgaon, is affiliated with Prayag Sangeet Samiti,Allahabad for imparting Hindustani Classical Music. For Western Music, we prepare our students for various grade exams conducted by Trinity School of London for the course of their choice.
+          At Reet Sangeet Music Academy, we provide curriculum that balances technical mastery with the joy 
+          of music. We offer certification paths in Hindustani Classical through Prayag Sangeet Samiti and prepare students 
+          for Trinity School of London grade exams in Western Music. This tailored approach ensures every student builds a 
+          strong foundation while earning prestigious, globally recognized credentials.
           </p>
         </div>
         
