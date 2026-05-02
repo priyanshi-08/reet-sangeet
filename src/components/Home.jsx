@@ -4,6 +4,7 @@ import QuoteCarousel from './QuoteCarousel';
 import HeroCarousel from './HeroCarousel';
 import HomeAbout from './HomeAbout';
 import HomeCourses from './HomeCourses';
+import VideoGallery from './VideoGallery';
 
 function Home() {
 
@@ -12,6 +13,7 @@ function Home() {
       <HeroCarousel />
       <HomeAbout />
       <HomeCourses />
+      <VideoGallery/>
       <QuoteCarousel />
     </div>
   );
