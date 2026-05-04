@@ -22,10 +22,10 @@ function VideoGallery() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-black mb-4 tracking-tight"
           >
-            Watch Us in <span className="text-sunset-coral">Action</span>
+            Hear From Our <span className="text-sunset-coral">Community</span>
           </motion.h1>
           <p className="text-lg text-deep-navy/70 max-w-2xl mx-auto">
-            Experience the energy, dedication, and talent of our students and mentors at Reet Sangeet.
+            Watch how our personalized teaching and expert guidance have fueled our student's growth and passion.
           </p>
         </div>
 
