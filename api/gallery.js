@@ -134,6 +134,12 @@ function publicState(state) {
 
 function blobAuth() {
   ensureBlobEnv();
+  const storeId = process.env.BLOB_STORE_ID;
+  // A connected Blob store on Vercel authenticates with OIDC. Passing a
+  // manually copied token overrides that and can point at a deleted store.
+  if (process.env.VERCEL && storeId) {
+    return { storeId };
+  }
   return process.env.BLOB_READ_WRITE_TOKEN
     ? { token: process.env.BLOB_READ_WRITE_TOKEN }
     : {};
@@ -165,8 +171,11 @@ async function writeState(state) {
 
 function storageError(error) {
   const message = String(error?.message || "");
+  if (/does not exist|store_not_found|store not found/i.test(message)) {
+    return "The Blob store for this token no longer exists. In Vercel, open Storage, connect the current Blob store to this project, and redeploy. Do not reuse an old token from .env.";
+  }
   if (/token|blob/i.test(message)) {
-    return "Gallery storage is not connected. Add a Vercel Blob store to this project.";
+    return message.replace(/^Vercel Blob:\s*/i, "");
   }
   return "Gallery storage is unavailable.";
 }
