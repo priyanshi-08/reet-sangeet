@@ -38,14 +38,16 @@ function findEnvValue(pattern) {
 }
 
 function ensureBlobEnv() {
+  // A connected store injects REET_SANGEET_*. Prefer those over a manually
+  // pasted BLOB_READ_WRITE_TOKEN, which can point at a deleted store.
   const token =
-    unquote(process.env.BLOB_READ_WRITE_TOKEN) ||
     unquote(process.env.REET_SANGEET_READ_WRITE_TOKEN) ||
-    findEnvValue(/READ_WRITE_TOKEN$/);
+    findEnvValue(/^(?!BLOB_).*READ_WRITE_TOKEN$/) ||
+    unquote(process.env.BLOB_READ_WRITE_TOKEN);
   const storeId =
-    unquote(process.env.BLOB_STORE_ID) ||
     unquote(process.env.REET_SANGEET_STORE_ID) ||
-    findEnvValue(/STORE_ID$/);
+    findEnvValue(/^(?!BLOB_).*STORE_ID$/) ||
+    unquote(process.env.BLOB_STORE_ID);
   if (token) process.env.BLOB_READ_WRITE_TOKEN = token;
   if (storeId) process.env.BLOB_STORE_ID = storeId;
 }
@@ -153,7 +155,13 @@ async function readState() {
     return normalizeState(await response.json());
   } catch (error) {
     const message = String(error?.message || "");
-    if (error?.status === 404 || /not found/i.test(message)) return emptyState();
+    if (
+      error?.name === "BlobNotFoundError" ||
+      error?.status === 404 ||
+      /requested blob does not exist|blob not found/i.test(message)
+    ) {
+      return emptyState();
+    }
     throw error;
   }
 }
@@ -171,7 +179,7 @@ async function writeState(state) {
 
 function storageError(error) {
   const message = String(error?.message || "");
-  if (/does not exist|store_not_found|store not found/i.test(message)) {
+  if (/this store does not exist|store_not_found|store not found/i.test(message)) {
     return "The Blob store for this token no longer exists. In Vercel, open Storage, connect the current Blob store to this project, and redeploy. Do not reuse an old token from .env.";
   }
   if (/token|blob/i.test(message)) {
