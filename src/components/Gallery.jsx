@@ -24,10 +24,12 @@ function Gallery() {
   }, []);
 
   const galleryImages = [
-    ...uploads.map((image) => ({
-      id: image.id,
-      src: uploadedImageUrl(image.id),
-    })),
+    ...uploads
+      .filter((image) => uploadedImageUrl(image))
+      .map((image) => ({
+        id: image.id,
+        src: uploadedImageUrl(image),
+      })),
     ...staticGalleryImages.filter((image) => !hiddenStaticIds.includes(image.id)),
   ];
 

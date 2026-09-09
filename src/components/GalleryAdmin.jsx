@@ -236,8 +236,8 @@ function GalleryAdmin() {
                   {uploads.map((image) => (
                     <article key={image.id} className="relative rounded-3xl overflow-hidden bg-white shadow-sm">
                       <img
-                        src={uploadedImageUrl(image.id)}
-                        alt="Uploaded gallery photo"
+                        src={uploadedImageUrl(image)}
+                        alt="Uploaded gallery item"
                         className="w-full h-48 object-cover"
                       />
                       <button
@@ -271,7 +271,7 @@ function GalleryAdmin() {
                   <article key={image.id} className="relative rounded-3xl overflow-hidden bg-white shadow-sm">
                     <img
                       src={image.src}
-                      alt={`Gallery photo ${index + 1}`}
+                      alt={`Gallery item ${index + 1}`}
                       className="w-full h-48 object-cover"
                     />
                     <button
@@ -301,7 +301,7 @@ function GalleryAdmin() {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {hiddenStatic.map((image) => (
                     <article key={image.id} className="relative rounded-3xl overflow-hidden bg-white shadow-sm opacity-80">
-                      <img src={image.src} alt="Hidden gallery photo" className="w-full h-48 object-cover grayscale" />
+                      <img src={image.src} alt="Hidden gallery item" className="w-full h-48 object-cover grayscale" />
                       <button
                         type="button"
                         disabled={isSubmitting}

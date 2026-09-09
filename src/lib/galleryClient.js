@@ -22,15 +22,15 @@ export function setAdminToken(token) {
   }
 }
 
-export function uploadedImageUrl(id) {
-  return `${API_URL}?action=image&id=${encodeURIComponent(id)}`;
+export function uploadedImageUrl(image) {
+  return image?.url || "";
 }
 
 async function parseJson(response) {
   const data = await response.json().catch(() => null);
   if (!data) {
     const error = new Error(
-      "Gallery storage is unavailable. Open this page on the live Netlify site to upload photos.",
+      "Gallery storage is unavailable. Open this page on the live Vercel site to upload photos.",
     );
     error.status = response.status;
     throw error;
