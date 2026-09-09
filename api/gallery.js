@@ -3,6 +3,17 @@ const fs = require("fs");
 const path = require("path");
 const { del, head, put } = require("@vercel/blob");
 
+function unquote(value) {
+  const text = String(value || "").trim();
+  if (
+    (text.startsWith('"') && text.endsWith('"')) ||
+    (text.startsWith("'") && text.endsWith("'"))
+  ) {
+    return text.slice(1, -1);
+  }
+  return text;
+}
+
 function loadEnvFile() {
   const envPath = path.resolve(__dirname, "../.env");
   if (!fs.existsSync(envPath)) return;
@@ -14,14 +25,24 @@ function loadEnvFile() {
     const separator = trimmed.indexOf("=");
     if (separator === -1) continue;
     const key = trimmed.slice(0, separator).trim();
-    const value = trimmed.slice(separator + 1).trim();
+    const value = unquote(trimmed.slice(separator + 1));
     if (key && process.env[key] === undefined) {
       process.env[key] = value;
     }
   }
 }
 
+function ensureBlobEnv() {
+  const token = unquote(
+    process.env.BLOB_READ_WRITE_TOKEN || process.env.REET_SANGEET_READ_WRITE_TOKEN,
+  );
+  const storeId = unquote(process.env.BLOB_STORE_ID || process.env.REET_SANGEET_STORE_ID);
+  if (token) process.env.BLOB_READ_WRITE_TOKEN = token;
+  if (storeId) process.env.BLOB_STORE_ID = storeId;
+}
+
 loadEnvFile();
+ensureBlobEnv();
 
 const MANIFEST_PATH = "gallery/manifest.json";
 const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
@@ -102,9 +123,16 @@ function publicState(state) {
   };
 }
 
+function blobAuth() {
+  ensureBlobEnv();
+  return process.env.BLOB_READ_WRITE_TOKEN
+    ? { token: process.env.BLOB_READ_WRITE_TOKEN }
+    : {};
+}
+
 async function readState() {
   try {
-    const meta = await head(MANIFEST_PATH);
+    const meta = await head(MANIFEST_PATH, blobAuth());
     const response = await fetch(`${meta.url}?t=${Date.now()}`, { cache: "no-store" });
     if (!response.ok) return emptyState();
     return normalizeState(await response.json());
@@ -117,6 +145,7 @@ async function readState() {
 
 async function writeState(state) {
   await put(MANIFEST_PATH, JSON.stringify(state), {
+    ...blobAuth(),
     access: "public",
     addRandomSuffix: false,
     allowOverwrite: true,
@@ -134,6 +163,7 @@ function storageError(error) {
 }
 
 module.exports = async function handler(req, res) {
+  ensureBlobEnv();
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     return send(res, 503, {
       error: "Gallery storage is not connected. Add a Vercel Blob store to this project.",
@@ -186,7 +216,7 @@ module.exports = async function handler(req, res) {
     if (body.action === "delete") {
       const current = state.uploads.find((image) => image.id === body.id);
       state.uploads = state.uploads.filter((image) => image.id !== body.id);
-      if (current?.url) await del(current.url);
+      if (current?.url) await del(current.url, blobAuth());
       await writeState(state);
       return send(res, 200, publicState(state));
     }
@@ -203,6 +233,7 @@ module.exports = async function handler(req, res) {
 
       const id = crypto.randomBytes(12).toString("hex");
       const blob = await put(`gallery/${id}.jpg`, bytes, {
+        ...blobAuth(),
         access: "public",
         contentType: "image/jpeg",
       });
