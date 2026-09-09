@@ -1,57 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaChevronDown } from "react-icons/fa";
-import { Helmet } from "react-helmet-async"; // <-- 1. Imported Helmet for SEO
-
-// Import all 21 images
-import img1 from "../assets/gallery/image1.jpeg";
-import img2 from "../assets/gallery/image2.jpeg";
-import img3 from "../assets/gallery/image3.jpeg";
-import img4 from "../assets/gallery/image4.jpeg";
-import img5 from "../assets/gallery/image5.jpeg";
-import img6 from "../assets/gallery/image6.jpeg";
-import img7 from "../assets/gallery/image7.jpeg";
-import img8 from "../assets/gallery/image8.jpeg";
-import img9 from "../assets/gallery/image9.jpeg";
-import img10 from "../assets/gallery/image10.jpeg";
-import img11 from "../assets/gallery/image11.jpeg";
-import img12 from "../assets/gallery/image12.jpeg";
-import img13 from "../assets/gallery/image13.jpeg";
-import img14 from "../assets/gallery/image14.jpeg";
-import img15 from "../assets/gallery/image15.jpeg";
-import img16 from "../assets/gallery/image16.jpeg";
-import img17 from "../assets/gallery/image17.jpeg";
-import img18 from "../assets/gallery/image18.jpeg";
-import img19 from "../assets/gallery/image19.jpeg";
-import img20 from "../assets/gallery/image20.jpeg";
-import img21 from "../assets/gallery/image21.jpeg";
+import { Helmet } from "react-helmet-async";
+import { staticGalleryImages } from "../data/galleryImages";
+import { fetchGalleryState, uploadedImageUrl } from "../lib/galleryClient";
 
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [visibleCount, setVisibleCount] = useState(9);
+  const [hiddenStaticIds, setHiddenStaticIds] = useState([]);
+  const [uploads, setUploads] = useState([]);
+
+  useEffect(() => {
+    fetchGalleryState()
+      .then((state) => {
+        setHiddenStaticIds(state.hiddenStaticIds || []);
+        setUploads(state.uploads || []);
+      })
+      .catch(() => {
+        setHiddenStaticIds([]);
+        setUploads([]);
+      });
+  }, []);
 
   const galleryImages = [
-    { id: 1, src: img1 },
-    { id: 2, src: img2 },
-    { id: 3, src: img3 },
-    { id: 4, src: img4 },
-    { id: 5, src: img5 },
-    { id: 6, src: img6 },
-    { id: 7, src: img7 },
-    { id: 8, src: img8 },
-    { id: 9, src: img9 },
-    { id: 10, src: img10 },
-    { id: 11, src: img11 },
-    { id: 12, src: img12 },
-    { id: 13, src: img13 },
-    { id: 14, src: img14 },
-    { id: 15, src: img15 },
-    { id: 16, src: img16 },
-    { id: 17, src: img17 },
-    { id: 18, src: img18 },
-    { id: 19, src: img19 },
-    { id: 20, src: img20 },
-    { id: 21, src: img21 },
+    ...uploads.map((image) => ({
+      id: image.id,
+      src: uploadedImageUrl(image.id),
+    })),
+    ...staticGalleryImages.filter((image) => !hiddenStaticIds.includes(image.id)),
   ];
 
   const displayedImages = galleryImages.slice(0, visibleCount);
