@@ -32,11 +32,20 @@ function loadEnvFile() {
   }
 }
 
+function findEnvValue(pattern) {
+  const direct = Object.keys(process.env).find((key) => pattern.test(key) && process.env[key]);
+  return direct ? unquote(process.env[direct]) : "";
+}
+
 function ensureBlobEnv() {
-  const token = unquote(
-    process.env.BLOB_READ_WRITE_TOKEN || process.env.REET_SANGEET_READ_WRITE_TOKEN,
-  );
-  const storeId = unquote(process.env.BLOB_STORE_ID || process.env.REET_SANGEET_STORE_ID);
+  const token =
+    unquote(process.env.BLOB_READ_WRITE_TOKEN) ||
+    unquote(process.env.REET_SANGEET_READ_WRITE_TOKEN) ||
+    findEnvValue(/READ_WRITE_TOKEN$/);
+  const storeId =
+    unquote(process.env.BLOB_STORE_ID) ||
+    unquote(process.env.REET_SANGEET_STORE_ID) ||
+    findEnvValue(/STORE_ID$/);
   if (token) process.env.BLOB_READ_WRITE_TOKEN = token;
   if (storeId) process.env.BLOB_STORE_ID = storeId;
 }
@@ -166,7 +175,8 @@ module.exports = async function handler(req, res) {
   ensureBlobEnv();
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     return send(res, 503, {
-      error: "Gallery storage is not connected. Add a Vercel Blob store to this project.",
+      error:
+        "Gallery storage is not connected. Add BLOB_READ_WRITE_TOKEN to the Vercel Production environment, then redeploy.",
     });
   }
 
