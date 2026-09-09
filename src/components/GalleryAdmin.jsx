@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   FaEye,
   FaEyeSlash,
@@ -267,29 +267,35 @@ function GalleryAdmin() {
                 <span className="text-deep-navy/40 text-lg">({visibleStatic.length})</span>
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {visibleStatic.map((image, index) => (
-                  <article key={image.id} className="relative rounded-3xl overflow-hidden bg-white shadow-sm">
-                    <img
-                      src={image.src}
-                      alt={`Gallery item ${index + 1}`}
-                      className="w-full h-48 object-cover"
-                    />
-                    <button
-                      type="button"
-                      disabled={isSubmitting}
-                      onClick={() =>
-                        runAction(
-                          () => setStaticImageHidden(image.id, true),
-                          "Photo hidden from the gallery.",
-                        )
-                      }
-                      className="absolute top-3 right-3 bg-white/95 text-deep-navy p-2.5 rounded-full shadow hover:bg-deep-navy hover:text-white transition-colors"
-                      aria-label="Hide photo"
+                <AnimatePresence>
+                  {visibleStatic.map((image) => (
+                    <motion.article
+                      key={image.id}
+                      exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
+                      className="relative rounded-3xl overflow-hidden bg-white shadow-sm"
                     >
-                      <FaEyeSlash />
-                    </button>
-                  </article>
-                ))}
+                      <img
+                        src={image.src}
+                        alt={`Gallery item ${image.id.replace("static-", "")}`}
+                        className="w-full h-48 object-cover"
+                      />
+                      <button
+                        type="button"
+                        disabled={isSubmitting}
+                        onClick={() =>
+                          runAction(
+                            () => setStaticImageHidden(image.id, true),
+                            "Photo hidden from the gallery.",
+                          )
+                        }
+                        className="absolute top-3 right-3 bg-white/95 text-deep-navy p-2.5 rounded-full shadow hover:bg-deep-navy hover:text-white transition-colors"
+                        aria-label="Hide photo"
+                      >
+                        <FaEyeSlash />
+                      </button>
+                    </motion.article>
+                  ))}
+                </AnimatePresence>
               </div>
             </section>
 
@@ -299,25 +305,35 @@ function GalleryAdmin() {
                   Hidden photos <span className="text-deep-navy/40 text-lg">({hiddenStatic.length})</span>
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {hiddenStatic.map((image) => (
-                    <article key={image.id} className="relative rounded-3xl overflow-hidden bg-white shadow-sm opacity-80">
-                      <img src={image.src} alt="Hidden gallery item" className="w-full h-48 object-cover grayscale" />
-                      <button
-                        type="button"
-                        disabled={isSubmitting}
-                        onClick={() =>
-                          runAction(
-                            () => setStaticImageHidden(image.id, false),
-                            "Photo restored to the gallery.",
-                          )
-                        }
-                        className="absolute top-3 right-3 bg-white/95 text-soothing-teal p-2.5 rounded-full shadow hover:bg-soothing-teal hover:text-white transition-colors"
-                        aria-label="Restore photo"
+                  <AnimatePresence>
+                    {hiddenStatic.map((image) => (
+                      <motion.article
+                        key={image.id}
+                        exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
+                        className="relative rounded-3xl overflow-hidden bg-white shadow-sm opacity-80"
                       >
-                        <FaEye />
-                      </button>
-                    </article>
-                  ))}
+                        <img
+                          src={image.src}
+                          alt={`Gallery item ${image.id.replace("static-", "")} (hidden)`}
+                          className="w-full h-48 object-cover grayscale"
+                        />
+                        <button
+                          type="button"
+                          disabled={isSubmitting}
+                          onClick={() =>
+                            runAction(
+                              () => setStaticImageHidden(image.id, false),
+                              "Photo restored to the gallery.",
+                            )
+                          }
+                          className="absolute top-3 right-3 bg-white/95 text-soothing-teal p-2.5 rounded-full shadow hover:bg-soothing-teal hover:text-white transition-colors"
+                          aria-label="Restore photo"
+                        >
+                          <FaEye />
+                        </button>
+                      </motion.article>
+                    ))}
+                  </AnimatePresence>
                 </div>
               </section>
             )}
