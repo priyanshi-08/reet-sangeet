@@ -17,6 +17,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Courses from "./components/Courses";
 import Gallery from "./components/Gallery";
+import GalleryAdmin from "./components/GalleryAdmin";
 import Contact from "./components/Contact";
 
 // Automatically scrolls to the top of the page when navigating to a new route
@@ -49,6 +50,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/courses" element={<Courses />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/gallery-admin" element={<GalleryAdmin />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
