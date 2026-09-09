@@ -1,25 +1,12 @@
 const API_URL = "/api/gallery";
-const TOKEN_KEY = process.env.REACT_APP_TOKEN_KEY;
-
-function requireTokenKey() {
-  if (!TOKEN_KEY) {
-    throw new Error("REACT_APP_TOKEN_KEY is not set.");
-  }
-  return TOKEN_KEY;
-}
+let adminToken = null;
 
 export function getAdminToken() {
-  if (!TOKEN_KEY) return null;
-  return sessionStorage.getItem(TOKEN_KEY);
+  return adminToken;
 }
 
 export function setAdminToken(token) {
-  const tokenKey = requireTokenKey();
-  if (token) {
-    sessionStorage.setItem(tokenKey, token);
-  } else {
-    sessionStorage.removeItem(tokenKey);
-  }
+  adminToken = token || null;
 }
 
 export function uploadedImageUrl(image) {
